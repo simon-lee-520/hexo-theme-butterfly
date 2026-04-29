@@ -1,0 +1,16 @@
+/* 自定义字体 */
+@font-face {
+  font-family: 'YanShiXiaXingKai';
+  src: url('/fonts/YanShiXiaXingKai.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HanchanKT';
+  src: url('/fonts/HanchanKT.ttf');
+  font-display: swap;
+}
+
+h1#site-title, #subtitle {
+  font-family: 'YanShiXiaXingKai', sans-serif;
+}
