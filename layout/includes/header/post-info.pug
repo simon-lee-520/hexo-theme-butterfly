@@ -1,4 +1,5 @@
 - let comments = theme.comments
+include ../mixins/copyright-badge.pug
 #post-info
   h1.post-title= page.title || _p('no_title')
     if theme.post_edit.enable
@@ -7,6 +8,7 @@
 
   #post-meta
     .meta-firstline
+      +postCopyrightBadge(page.copyright_type)
       if theme.post_meta.post.date_type
         span.post-meta-date
           if theme.post_meta.post.date_type === 'both'

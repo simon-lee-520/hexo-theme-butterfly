@@ -1,0 +1,4 @@
+mixin postCopyrightBadge(copyrightType)
+  - const badge = copyrightBadge(copyrightType)
+  if badge
+    span(class=badge.className)= badge.label

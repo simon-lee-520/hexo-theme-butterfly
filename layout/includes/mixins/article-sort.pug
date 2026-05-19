@@ -1,3 +1,5 @@
+include copyright-badge.pug
+
 mixin articleSort(posts)
   .article-sort
     - let year
@@ -17,6 +19,7 @@ mixin articleSort(posts)
               div(style=`background: ${article.cover}`)
         .article-sort-item-info
           .article-sort-item-time
+            +postCopyrightBadge(article.copyright_type)
             i.far.fa-calendar-alt
             time.post-meta-date-created(datetime=date_xml(article.date) title=_p('post.created') + ' ' + full_date(article.date))= date(article.date, config.date_format)
           a.article-sort-item-title(href=url_for(article.path) title=title)= title

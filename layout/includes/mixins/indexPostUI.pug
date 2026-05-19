@@ -1,3 +1,5 @@
+include copyright-badge.pug
+
 mixin indexPostUI()
   - const indexLayout = theme.index_layout
   - const masonryLayoutClass = [6, 7].includes(indexLayout) ? 'masonry' : ''
@@ -24,6 +26,7 @@ mixin indexPostUI()
                 i.fas.fa-thumbtack.sticky
               = title
             .article-meta-wrap
+              +postCopyrightBadge(article.copyright_type)
               if theme.post_meta.page.date_type
                 span.post-meta-date
                   if theme.post_meta.page.date_type === 'both'
