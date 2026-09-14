@@ -1,0 +1,48 @@
+/* 本地字体 @font-face
+ * HarmonyKT        - HarmonyOS Sans Condensed（全局）
+ * HanchanKT        - 寒蝉正楷体
+ * YunfengHanchanKT - 云峰寒蝉体
+ * XiangcuiZeroHei  - 香萃零度黑（主页标题）
+ * 851DianJi        - 851 点阵文（进入博客按钮）
+ * YanShiXiaXK      - 演示夏行楷（站点标题 / 副标题）
+ */
+@font-face {
+  font-family: 'HarmonyKT';
+  src: url('/fonts/HarmonyKT.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HanchanKT';
+  src: url('/fonts/HanchanKT.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'YunfengHanchanKT';
+  src: url('/fonts/YunfengHanchanKT.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'XiangcuiZeroHei';
+  src: url('/fonts/XiangcuiZeroHei.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '851DianJi';
+  src: url('/fonts/851DianJi.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'YanShiXiaXK';
+  src: url('/fonts/YanShiXiaXK.ttf') format('truetype');
+  font-display: swap;
+}
+
+h1#site-title,
+#subtitle {
+  font-family: 'YanShiXiaXK', sans-serif;
+}

@@ -6,34 +6,43 @@ html(lang=config.language data-theme=theme.display_mode class=hideAside)
   head
     include includes/head.pug
     link(rel='stylesheet' href=url_for('/css/landing.css') media='all')
+    script(type='importmap').
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/",
+          "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.3.6/lib/three-vrm.module.js"
+        }
+      }
   body.page-landing
     != partial('includes/loading/index', {}, { cache: true })
 
     #landing
-      header.landing-hero#landing-hero
-        .landing-hero-inner
-          button#landing-theme-toggle.landing-theme-btn(type='button' title='切换深色/浅色' aria-label='切换主题')
-            i.fas.fa-adjust
-          img.landing-avatar(src=url_for(theme.avatar.img) alt=config.author)
-          h1.landing-name= "Welcome To Simon's Home"
-          if theme.subtitle && theme.subtitle.enable
-            #landing-subtitle
-              span#subtitle
-          a.landing-cta(href=url_for('/blog/') data-pjax='false')
-            span 进入博客
-            i.fas.fa-arrow-right
-          a.landing-scroll-hint(href='#landing-content' aria-label='向下滚动')
-            i.fas.fa-chevron-down
+      #landing-foreground
+        section.act-1.landing-hero#landing-hero
+          .landing-hero-inner
+            img.landing-avatar(src=url_for(theme.avatar.img) alt=config.author)
+            h1.landing-name= "Welcome To Simon's Home"
+            if theme.subtitle && theme.subtitle.enable
+              #landing-subtitle
+                span#subtitle
+            a.landing-cta(href=url_for('/blog/') target='_blank' rel='noopener noreferrer' data-pjax='false')
+              span 進入博客
+              i.fas.fa-arrow-right
+            a.landing-scroll-hint(href='#landing-content' aria-label='向下滚动')
+              i.fas.fa-chevron-down
 
-      main#landing-content.landing-content
-        .landing-content-inner
-          != page.content
+        section.act-2.act-spacer#landing-act-2(aria-hidden='true')
+
+        section.act-3#landing-content.landing-content
+          .landing-content-inner
+            != page.content
 
       footer.landing-footer
         - const landingYear = new Date().getFullYear()
         span © #{landingYear} #{config.author}
         span.landing-footer-sep ·
-        a(href=url_for('/blog/') data-pjax='false') 技术博客
+        a(href=url_for('/blog/') target='_blank' rel='noopener noreferrer' data-pjax='false') 技术博客
 
     script(src=url_for(theme.asset.utils))
     if theme.subtitle && theme.subtitle.enable
@@ -41,13 +50,4 @@ html(lang=config.language data-theme=theme.display_mode class=hideAside)
       include includes/third-party/subtitle.pug
     script(type='module' src=url_for('/js/bg-tech.js'))
     script.
-      (() => {
-        const btn = document.getElementById('landing-theme-toggle')
-        if (!btn || !window.btf) return
-        btn.addEventListener('click', () => {
-          const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-          if (next === 'dark') btf.activateDarkMode()
-          else btf.activateLightMode()
-          btf.saveToLocal.set('theme', next, 7)
-        })
-      })()
+      document.documentElement.setAttribute('data-theme', 'dark')
